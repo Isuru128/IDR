@@ -187,3 +187,11 @@ cd IDR
 ## 🔒 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+Hero overlay example:
+
+IDR
+Where Time Meets Rarity
+
+Discover a masterpiece where rare gemstones meet precision horology.

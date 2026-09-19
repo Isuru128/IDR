@@ -1,184 +1,2853 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* ==========================================================================
+   IDR HAUTE HORLOGERIE - LUXURY BLACK, GOLD & SILVER DESIGN SYSTEM
+   ========================================================================== */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+/* Main Layout Container */
+.lux-app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  background-color: var(--bg-abyss);
+  color: var(--silver-bright);
+  position: relative;
+  overflow-x: hidden;
 }
 
-#next-steps {
+.lux-main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ==========================================================================
+   COLOR UTILITIES & METALLIC TEXT GRADIENTS
+   ========================================================================== */
+.lux-text-gold {
+  background: var(--gold-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.lux-text-silver {
+  background: var(--silver-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* Divider with Gold Diamond Accent */
+.lux-gold-divider {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 26px;
+  width: 160px;
+  position: relative;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.lux-gold-divider::before,
+.lux-gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
 }
 
-#next-steps ul {
+.lux-divider-diamond {
+  color: var(--gold-primary);
+  font-size: 10px;
+  padding: 0 10px;
+  text-shadow: 0 0 8px var(--gold-glow);
+}
+
+/* ==========================================================================
+   LUXURY BUTTONS (GOLD, SILVER, OUTLINE)
+   ========================================================================== */
+.lux-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-family: var(--font-sans-luxury);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.lux-btn-sm {
+  font-size: 11px;
+  padding: 10px 20px;
+}
+
+.lux-btn-md {
+  font-size: 12px;
+  padding: 14px 28px;
+}
+
+.lux-btn-lg {
+  font-size: 13px;
+  padding: 16px 36px;
+}
+
+/* Gold Variant */
+.lux-btn-gold {
+  background: var(--gold-gradient);
+  color: #050505;
+  border-color: #ffd766;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+}
+
+.lux-btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+  filter: brightness(1.08);
+}
+
+/* Gold Outline Variant */
+.lux-btn-gold-outline {
+  background: rgba(10, 10, 12, 0.4);
+  color: var(--gold-light);
+  border-color: var(--gold-primary);
+  backdrop-filter: blur(8px);
+}
+
+.lux-btn-gold-outline:hover {
+  background: var(--gold-gradient);
+  color: #050505;
+  border-color: #ffd766;
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Silver Outline Variant */
+.lux-btn-silver-outline {
+  background: rgba(15, 15, 18, 0.5);
+  color: var(--silver-bright);
+  border-color: var(--silver-hairline);
+  backdrop-filter: blur(8px);
+}
+
+.lux-btn-silver-outline:hover {
+  border-color: var(--silver-bright);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FLOATING NAVBAR (SITS DIRECTLY OVER HERO VIDEO)
+   ========================================================================== */
+.lux-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+
+.lux-navbar.transparent {
+  background: linear-gradient(180deg, rgba(3, 3, 4, 0.85) 0%, rgba(3, 3, 4, 0.3) 65%, transparent 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 24px 0;
+}
+
+.lux-navbar.scrolled {
+  background: rgba(5, 5, 7, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gold-hairline);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  padding: 14px 0;
+}
+
+.lux-navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Emblem & Typography */
+.lux-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.lux-logo-wrapper {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--gold-hairline);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(5, 5, 6, 0.8) 100%);
+  transition: all 0.3s ease;
+}
+
+.lux-brand:hover .lux-logo-wrapper {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 18px var(--gold-glow);
+  transform: scale(1.05);
+}
+
+.lux-logo-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5));
+}
+
+.lux-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-brand-title {
+  font-family: var(--font-serif-royal);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  background: var(--gold-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.lux-brand-subtitle {
+  font-family: var(--font-sans-luxury);
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  color: var(--silver-primary);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Navigation Links */
+.lux-nav-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.lux-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 36px;
   list-style: none;
-  padding: 0;
+}
+
+.lux-nav-link {
+  position: relative;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--silver-primary);
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.lux-nav-link:hover {
+  color: var(--gold-light);
+}
+
+.lux-nav-link-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: var(--gold-gradient);
+  transition: width 0.3s ease;
+}
+
+.lux-nav-link:hover .lux-nav-link-indicator {
+  width: 100%;
+}
+
+/* Navbar Actions */
+.lux-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lux-edition-tag {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--silver-muted);
+  border-right: 1px solid var(--silver-hairline);
+  padding-right: 20px;
+}
+
+.lux-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lux-hamburger-bar {
+  width: 24px;
+  height: 2px;
+  background-color: var(--gold-primary);
+  transition: all 0.3s ease;
+}
+
+.lux-mobile-drawer {
+  display: none;
+}
+
+/* ==========================================================================
+   1. HERO VIDEO BANNER SECTION
+   ========================================================================== */
+.lux-hero-banner {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lux-hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.lux-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* Cinematic Dark Overlays */
+.lux-hero-overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(3, 3, 4, 0.9) 0%, rgba(3, 3, 4, 0.4) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.lux-hero-overlay-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(3, 3, 4, 0.2) 0%, rgba(3, 3, 4, 0.75) 85%, rgba(3, 3, 4, 0.95) 100%);
+  pointer-events: none;
+}
+
+.lux-hero-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(0deg, var(--bg-abyss) 0%, rgba(3, 3, 4, 0.8) 40%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Hero Content */
+.lux-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 140px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lux-hero-badge-wrap {
+  margin-bottom: 20px;
+}
+
+.lux-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 18px;
+  border-radius: 30px;
+  background: rgba(10, 10, 12, 0.6);
+  border: 1px solid var(--gold-hairline);
+  color: var(--silver-bright);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+}
+
+.lux-gem-sparkle {
+  color: var(--gold-primary);
+  font-size: 11px;
+}
+
+.lux-hero-title {
+  font-family: var(--font-serif-royal);
+  font-size: 58px;
+  line-height: 1.12;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.lux-hero-subtitle {
+  font-family: var(--font-serif-elegant);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--silver-primary);
+  max-width: 780px;
+  margin: 0 auto 34px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Hero Metrics Bar */
+.lux-hero-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 12, 14, 0.7);
+  border: 1px solid var(--gold-hairline);
+  backdrop-filter: blur(12px);
+  padding: 16px 36px;
+  border-radius: 4px;
+  margin-bottom: 38px;
+  gap: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.lux-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lux-metric-val {
+  font-family: var(--font-serif-royal);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.lux-metric-lbl {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.lux-metric-divider {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(180deg, transparent, var(--gold-hairline), transparent);
+}
+
+/* Action Buttons & Video Controller */
+.lux-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.lux-video-control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 15, 18, 0.6);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-primary);
+  padding: 15px 22px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.lux-video-control-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* Scroll Needle Prompt */
+.lux-hero-scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.lux-scroll-text {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+}
+
+.lux-scroll-needle {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, var(--gold-primary) 0%, transparent 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.lux-needle-point {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: #ffffff;
+  animation: luxNeedlePulse 2.2s infinite ease-in-out;
+}
+
+@keyframes luxNeedlePulse {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(250%);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   COMMON SECTION STYLES
+   ========================================================================== */
+.lux-section {
+  padding: 120px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.lux-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.lux-section-overline {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.lux-section-title {
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
+
+.lux-section-desc {
+  font-family: var(--font-serif-elegant);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--silver-primary);
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   2. KING KASHYAPA SPOTLIGHT SECTION
+   ========================================================================== */
+.lux-kashyapa-container {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.lux-watch-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lux-watch-glow-aura {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.03) 55%, transparent 75%);
+  filter: blur(50px);
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.lux-watch-frame {
+  position: relative;
+  z-index: 2;
+  border-radius: 8px;
+  padding: 24px;
+  background: radial-gradient(circle at center, rgba(25, 25, 30, 0.6) 0%, rgba(10, 10, 12, 0.95) 100%);
+  border: 1px solid var(--gold-hairline);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(212, 175, 55, 0.05);
+}
+
+.lux-watch-image {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
+  transition: transform 0.5s ease;
+}
+
+.lux-watch-frame:hover .lux-watch-image {
+  transform: scale(1.02);
+}
+
+/* Hotspots on Watch */
+.lux-hotspot-pin {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(10, 10, 12, 0.85);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.lux-hotspot-dot {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lux-hotspot-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-primary);
+  animation: luxPulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes luxPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.lux-hotspot-pin.active,
+.lux-hotspot-pin:hover {
+  background: var(--gold-primary);
+  color: #050505;
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+/* Hotspot Popup */
+.lux-hotspot-popup {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 380px;
+  background: rgba(12, 12, 15, 0.95);
+  border: 1px solid var(--gold-primary);
+  backdrop-filter: blur(16px);
+  padding: 18px 22px;
+  border-radius: 4px;
+  z-index: 20;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+  animation: luxFadeUp 0.3s ease-out;
+}
+
+@keyframes luxFadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 15px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.lux-hotspot-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.lux-hotspot-popup-title {
+  font-family: var(--font-serif-royal);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lux-hotspot-close {
+  background: none;
+  border: none;
+  color: var(--silver-muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.lux-hotspot-close:hover {
+  color: var(--gold-light);
+}
+
+.lux-hotspot-popup-desc {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.lux-hotspot-hint {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--silver-muted);
+  margin-top: 18px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lux-hint-icon {
+  color: var(--gold-primary);
+}
+
+/* Dossier Tabs & Content */
+.lux-watch-dossier {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 6px;
+  padding: 40px;
+  box-shadow: var(--shadow-luxury);
+}
+
+.lux-tab-nav {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--silver-hairline);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.lux-tab-btn {
+  background: none;
+  border: none;
+  color: var(--silver-muted);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.lux-tab-btn:hover {
+  color: var(--silver-bright);
+}
+
+.lux-tab-btn.active {
+  color: var(--gold-light);
+}
+
+.lux-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold-gradient);
+}
+
+/* Spec Grid */
+.lux-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.lux-spec-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  background: rgba(20, 20, 24, 0.4);
+  border-left: 2px solid var(--gold-hairline);
+}
+
+.lux-spec-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.lux-spec-val {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Tab Narrative */
+.lux-tab-narrative {
+  padding: 6px 0;
+}
+
+.lux-narrative-title {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.lux-narrative-text {
+  font-family: var(--font-serif-elegant);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--silver-primary);
+  margin-bottom: 20px;
+}
+
+.lux-narrative-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lux-narrative-bullets li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--silver-primary);
+  padding-left: 20px;
+  position: relative;
+}
+
+.lux-narrative-bullets li::before {
+  content: '◆';
+  color: var(--gold-primary);
+  font-size: 8px;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+
+/* Dossier Actions & Price */
+.lux-dossier-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--gold-hairline);
+  padding-top: 28px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lux-price-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-price-tag {
+  font-family: var(--font-serif-royal);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+}
+
+.lux-tax-tag {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   3. IMPERIAL COLLECTIONS GRID
+   ========================================================================== */
+.lux-collections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.lux-watch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--silver-hairline);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.lux-watch-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold-hairline);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.lux-card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lux-card-tag {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.lux-card-badge {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--silver-hairline);
+  border-radius: 2px;
+}
+
+.lux-card-media-wrapper {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1b1b22 0%, #08080a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lux-card-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+  transition: transform 0.6s ease;
+}
+
+.lux-watch-card:hover .lux-card-img {
+  transform: scale(1.06);
+}
+
+.lux-card-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.8s ease;
+}
+
+.lux-watch-card:hover .lux-card-shine {
+  left: 150%;
+}
+
+.lux-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.lux-card-title {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.lux-card-desc {
+  font-family: var(--font-serif-elegant);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--silver-primary);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.lux-card-specs {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 14px 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lux-card-spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.lux-card-spec-k {
+  color: var(--silver-muted);
+}
+
+.lux-card-spec-v {
+  color: var(--silver-bright);
+  font-weight: 500;
+  text-align: right;
+  max-width: 60%;
+}
+
+/* ==========================================================================
+   4. ROYAL HERITAGE & CRAFTSMANSHIP
+   ========================================================================== */
+.lux-heritage-section {
+  background: linear-gradient(180deg, var(--bg-abyss) 0%, #0a0a0d 50%, var(--bg-abyss) 100%);
+  border-top: 1px solid var(--gold-hairline);
+  border-bottom: 1px solid var(--gold-hairline);
+  padding: 140px 40px;
+}
+
+.lux-heritage-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.lux-heritage-title {
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  margin: 12px 0 28px;
+}
+
+.lux-heritage-quote {
+  font-family: var(--font-serif-elegant);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.6;
+  color: var(--silver-bright);
+  border-left: 2px solid var(--gold-primary);
+  padding-left: 24px;
+  margin-bottom: 48px;
+}
+
+.lux-heritage-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.lux-pillar-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.lux-pillar-icon {
+  font-family: var(--font-serif-royal);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  border: 1px solid var(--gold-hairline);
+  background: rgba(212, 175, 55, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lux-pillar-title {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.lux-pillar-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--silver-primary);
+}
+
+.lux-heritage-visual {
+  position: relative;
+}
+
+.lux-heritage-img-card {
+  position: relative;
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-luxury);
+}
+
+.lux-heritage-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.1) brightness(0.85);
+  transition: transform 0.6s ease;
+}
+
+.lux-heritage-img-card:hover .lux-heritage-img {
+  transform: scale(1.03);
+}
+
+.lux-heritage-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(5, 5, 7, 0.95) 0%, rgba(5, 5, 7, 0.5) 60%, transparent 100%);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lux-heritage-caption {
+  font-family: var(--font-serif-royal);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+}
+
+.lux-heritage-subcaption {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   5. BESPOKE ATELIER BANNER
+   ========================================================================== */
+.lux-atelier-banner {
+  padding: 100px 40px;
+}
+
+.lux-atelier-inner {
+  background: radial-gradient(ellipse at center, rgba(25, 25, 32, 0.7) 0%, rgba(8, 8, 10, 0.95) 100%);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 6px;
+  padding: 80px 40px;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+.lux-atelier-heading {
+  font-size: 36px;
+  letter-spacing: 0.12em;
+  margin: 16px 0 20px;
+}
+
+.lux-atelier-sub {
+  font-family: var(--font-serif-elegant);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--silver-primary);
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.lux-atelier-ctas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.lux-atelier-cities {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. VIP CONCIERGE MODAL
+   ========================================================================== */
+.lux-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 2, 3, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: luxFadeIn 0.3s ease-out;
+}
+
+@keyframes luxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lux-modal-card {
+  background: rgba(12, 12, 15, 0.97);
+  border: 1px solid var(--gold-primary);
+  border-radius: 6px;
+  max-width: 640px;
+  width: 100%;
+  padding: 44px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+.lux-modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--silver-muted);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.lux-modal-close-btn:hover {
+  color: var(--gold-light);
+}
+
+.lux-modal-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.lux-modal-tag {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.lux-modal-title {
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.lux-modal-desc {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.lux-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lux-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.lux-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lux-field-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--silver-primary);
+  text-transform: uppercase;
+}
+
+.lux-input-silver,
+.lux-select-silver,
+.lux-textarea-silver {
+  background: rgba(22, 22, 26, 0.8);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-bright);
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-family: var(--font-sans-luxury);
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.lux-input-silver:focus,
+.lux-select-silver:focus,
+.lux-textarea-silver:focus {
+  outline: none;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  background: rgba(28, 28, 34, 0.95);
+}
+
+.lux-privacy-pledge {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--silver-muted);
+  text-align: center;
+  display: block;
+  margin-top: 12px;
+}
+
+.lux-modal-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.lux-success-gold-emblem {
+  font-size: 38px;
+  color: var(--gold-primary);
+  margin-bottom: 16px;
+  animation: luxPulse 2s infinite ease-out;
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+.lux-footer {
+  background: #030304;
+  border-top: 1px solid var(--gold-hairline);
+  position: relative;
+  padding-top: 80px;
+}
+
+.lux-footer-top-accent {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 2px;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 15px var(--gold-primary);
+}
+
+.lux-footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 50px;
+}
+
+.lux-footer-brand-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.lux-footer-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.lux-footer-brand-name {
+  font-family: var(--font-serif-royal);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  background: var(--gold-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  line-height: 1;
+}
+
+.lux-footer-brand-tag {
+  font-size: 8px;
+  letter-spacing: 0.26em;
+  color: var(--silver-muted);
+}
+
+.lux-footer-desc {
+  font-family: var(--font-serif-elegant);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--silver-primary);
+  margin-bottom: 24px;
+}
+
+.lux-boutique-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold-light);
+}
+
+.lux-badge-divider {
+  color: var(--silver-muted);
+}
+
+.lux-footer-heading {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--gold-light);
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.lux-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lux-footer-links a {
+  font-size: 12px;
+  color: var(--silver-primary);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+}
+
+.lux-footer-links a:hover {
+  color: var(--gold-primary);
+  padding-left: 4px;
+}
+
+.lux-footer-subtext {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--silver-muted);
+  margin-bottom: 18px;
+}
+
+.lux-newsletter-form {
   display: flex;
   gap: 8px;
-  margin: 32px 0 0;
+  margin-bottom: 12px;
+}
 
-  .logo {
-    height: 18px;
+.lux-subscribed-msg {
+  padding: 12px;
+  border: 1px solid var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-light);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.lux-confidentiality-note {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--silver-muted);
+  display: block;
+}
+
+/* Footer Bottom Bar */
+.lux-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 24px 0;
+}
+
+.lux-footer-bottom-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lux-copyright {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--silver-muted);
+}
+
+.lux-footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--silver-muted);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS, MOBILES, SCREENS)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .lux-collections-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
+  .lux-footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
+@media (max-width: 992px) {
+  .lux-hero-title {
+    font-size: 44px;
+  }
+  .lux-kashyapa-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .lux-heritage-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .lux-heritage-img {
+    height: 380px;
+  }
+  .lux-nav-desktop {
+    display: none;
+  }
+  .lux-edition-tag {
+    display: none;
+  }
+  .lux-mobile-toggle {
     display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
   }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+  /* Mobile Menu Drawer */
+  .lux-mobile-drawer {
+    display: block;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 5, 8, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gold-hairline);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
   }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
+  .lux-mobile-drawer.active {
+    max-height: 400px;
+  }
+  .lux-mobile-list {
+    list-style: none;
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .lux-mobile-link {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver-bright);
+    display: block;
+    padding: 6px 0;
+  }
+  .lux-mobile-link:hover {
+    color: var(--gold-primary);
   }
 }
 
-.ticks {
+@media (max-width: 768px) {
+  .lux-navbar-container {
+    padding: 0 20px;
+  }
+  .lux-section {
+    padding: 80px 20px;
+  }
+  .lux-hero-title {
+    font-size: 34px;
+  }
+  .lux-hero-subtitle {
+    font-size: 17px;
+  }
+  .lux-hero-metrics {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 20px;
+  }
+  .lux-metric-divider {
+    width: 60px;
+    height: 1px;
+  }
+  .lux-collections-grid {
+    grid-template-columns: 1fr;
+  }
+  .lux-footer-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px 40px;
+  }
+  .lux-specs-grid {
+    grid-template-columns: 1fr;
+  }
+  .lux-form-row {
+    grid-template-columns: 1fr;
+  }
+  .lux-modal-card {
+    padding: 30px 20px;
+  }
+}
+
+/* ==========================================================================
+   8. HAUTE HORLOGERIE ADMIN PORTAL (BLACK, GOLD, SILVER PALETTE)
+   ========================================================================== */
+.lux-admin-portal {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-abyss);
+  color: var(--silver-bright);
+  font-family: var(--font-sans-luxury);
   position: relative;
   width: 100%;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+/* Admin Sidebar */
+.lux-admin-sidebar {
+  width: 290px;
+  background-color: #060608;
+  border-right: 1px solid var(--gold-hairline);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 28px 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  z-index: 100;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+.lux-admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--silver-hairline);
+  margin-bottom: 24px;
+}
+
+.lux-admin-logo-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-primary);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(6, 6, 8, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lux-admin-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.lux-admin-brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-admin-brand-title {
+  font-family: var(--font-serif-royal);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  background: var(--gold-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lux-admin-brand-badge {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+}
+
+.lux-admin-nav-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-admin-nav-header {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--silver-muted);
+  margin-bottom: 14px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.lux-admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lux-admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--silver-primary);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.lux-admin-nav-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--silver-bright);
+  border-color: var(--silver-hairline);
+}
+
+.lux-admin-nav-item.active {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold-hairline);
+  color: var(--gold-light);
+  box-shadow: inset 2px 0 0 var(--gold-primary);
+}
+
+.lux-nav-icon {
+  font-size: 14px;
+  color: var(--gold-primary);
+  width: 18px;
+  text-align: center;
+}
+
+.lux-nav-title {
+  flex: 1;
+}
+
+.lux-nav-count {
+  font-size: 10px;
+  padding: 2px 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: var(--silver-bright);
+}
+
+.lux-count-gold {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-hairline);
+}
+
+.lux-nav-pill {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--gold-gradient);
+  color: #050505;
+  font-weight: 700;
+}
+
+/* Clocks */
+.lux-admin-clocks {
+  background: rgba(14, 14, 18, 0.6);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.lux-clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lux-clock-city {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+.lux-clock-time {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.lux-clock-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--silver-hairline);
+}
+
+.lux-admin-sidebar-footer {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Admin Main Content Wrapper */
+.lux-admin-main-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+}
+
+/* Admin Top Bar */
+.lux-admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 36px;
+  background: rgba(7, 7, 9, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gold-hairline);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  gap: 20px;
+}
+
+.lux-admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lux-admin-breadcrumb-root {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.lux-admin-breadcrumb-sep {
+  color: var(--gold-primary);
+  font-size: 12px;
+}
+
+.lux-admin-page-title {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+.lux-admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lux-admin-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 18, 22, 0.8);
+  border: 1px solid var(--silver-hairline);
+  border-radius: 4px;
+  padding: 8px 14px;
+  width: 260px;
+  transition: all 0.3s ease;
+}
+
+.lux-admin-search-box:focus-within {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.lux-search-icon {
+  font-size: 12px;
+}
+
+.lux-admin-search-input {
+  background: transparent;
+  border: none;
+  color: var(--silver-bright);
+  font-size: 11px;
+  outline: none;
+  width: 100%;
+}
+
+.lux-admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 1px solid var(--silver-hairline);
+}
+
+.lux-profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #050505;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lux-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-profile-name {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lux-profile-role {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* Admin Content Area */
+.lux-admin-content {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Metrics Row */
+.lux-admin-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.lux-admin-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-luxury);
+}
+
+.lux-admin-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.lux-stat-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--gold-hairline);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.lux-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-stat-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.lux-stat-val {
+  font-family: var(--font-serif-royal);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.lux-stat-sub {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Dashboard Split Grid */
+.lux-admin-dashboard-split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+/* Admin Panel */
+.lux-admin-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  padding: 26px;
+  box-shadow: var(--shadow-luxury);
+}
+
+.lux-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.lux-panel-title {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.lux-panel-desc {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Admin Tables */
+.lux-admin-table-wrap {
+  overflow-x: auto;
+}
+
+.lux-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.lux-admin-table th {
+  padding: 12px 16px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver-muted);
+  border-bottom: 1px solid var(--silver-hairline);
+  font-weight: 600;
+}
+
+.lux-admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.lux-admin-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.lux-admin-table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.lux-td-code {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lux-td-patron {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-patron-name {
+  font-weight: 600;
+  color: var(--silver-bright);
+}
+
+.lux-patron-email,
+.lux-patron-phone {
+  font-size: 10px;
+  color: var(--silver-muted);
+}
+
+.lux-td-piece {
+  font-family: var(--font-serif-royal);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lux-salon-tag {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--silver-hairline);
+  border-radius: 2px;
+  color: var(--silver-primary);
+  white-space: nowrap;
+}
+
+/* Status Pills */
+.lux-status-pill {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.lux-status-pill.new {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
+}
+
+.lux-status-pill.under-review {
+  background: rgba(192, 192, 192, 0.15);
+  color: #ffffff;
+  border: 1px solid var(--silver-primary);
+}
+
+.lux-status-pill.viewing-scheduled {
+  background: rgba(212, 175, 55, 0.25);
+  color: var(--gold-light);
+  border: 1px solid #ffd766;
+}
+
+.lux-status-pill.allocated {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.lux-table-action-btn {
+  background: transparent;
+  border: 1px solid var(--gold-hairline);
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lux-table-action-btn:hover {
+  background: var(--gold-gradient);
+  color: #050505;
+  border-color: #ffd766;
+}
+
+.lux-status-select {
+  background: rgba(20, 20, 24, 0.9);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-bright);
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.lux-status-select:focus {
+  border-color: var(--gold-primary);
+}
+
+/* Kashyapa Mini Preview on Dashboard */
+.lux-kashyapa-mini-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lux-mini-image-box {
+  position: relative;
+  height: 180px;
+  background: radial-gradient(circle at center, #1b1b22 0%, #070709 100%);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lux-mini-watch-img {
+  max-height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.9));
+}
+
+.lux-mini-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  padding: 3px 8px;
+  background: rgba(10, 10, 12, 0.7);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  border-radius: 2px;
+}
+
+.lux-mini-allocations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lux-mini-alloc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(20, 20, 24, 0.5);
+  border-left: 2px solid var(--gold-hairline);
+  font-size: 11px;
+  gap: 10px;
+}
+
+.lux-alloc-num {
+  font-family: var(--font-serif-royal);
+  font-weight: 700;
+  width: 45px;
+}
+
+.lux-alloc-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-alloc-patron {
+  font-weight: 500;
+  color: var(--silver-bright);
+}
+
+.lux-alloc-serial {
+  font-size: 9px;
+  font-family: monospace;
+}
+
+.lux-alloc-status {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.lux-alloc-status.delivered {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.lux-alloc-status.allocated-paid {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
+}
+
+.lux-alloc-status.under-private-viewing {
+  background: rgba(192, 192, 192, 0.15);
+  color: var(--silver-bright);
+  border: 1px solid var(--silver-primary);
+}
+
+.lux-alloc-status.negotiation {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-hairline);
+}
+
+.lux-alloc-status.available {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--silver-muted);
+  border: 1px solid var(--silver-hairline);
+}
+
+/* Timepieces Table specifics */
+.lux-td-watch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lux-table-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: #111115;
+  border: 1px solid var(--gold-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lux-table-thumb img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.lux-table-watch-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-watch-table-name {
+  font-family: var(--font-serif-royal);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lux-watch-table-mat {
+  font-size: 10px;
+}
+
+.lux-category-badge {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--silver-primary);
+}
+
+.lux-limitation-badge {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border: 1px solid var(--gold-hairline);
+  color: var(--gold-light);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.lux-td-price {
+  font-family: var(--font-serif-royal);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lux-stock-status-pill {
+  font-size: 10px;
+  color: var(--silver-primary);
+}
+
+/* Allocations Grid (1 of 8) */
+.lux-allocations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.lux-allocation-card {
+  background: rgba(14, 14, 18, 0.85);
+  border: 1px solid var(--silver-hairline);
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lux-allocation-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.lux-allocation-card.allocated {
+  border-color: var(--gold-hairline);
+}
+
+.lux-alloc-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lux-alloc-card-num {
+  font-family: var(--font-serif-royal);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.lux-alloc-pill {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.lux-alloc-pill.available {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-primary);
+}
+
+.lux-alloc-pill.delivered,
+.lux-alloc-pill.allocated-paid {
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+}
+
+.lux-alloc-pill.under-private-viewing,
+.lux-alloc-pill.negotiation {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.lux-alloc-card-center {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lux-alloc-card-label {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+}
+
+.lux-alloc-card-patron {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.lux-alloc-card-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 12px;
+  font-size: 10px;
+}
+
+.lux-alloc-spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lux-alloc-k {
+  color: var(--silver-muted);
+}
+
+.lux-alloc-v {
+  font-weight: 500;
+}
+
+.lux-alloc-manage-btn {
+  width: 100%;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-bright);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.lux-allocation-card:hover .lux-alloc-manage-btn {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* Salons Grid */
+.lux-salons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.lux-salon-card {
+  background: rgba(14, 14, 18, 0.85);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 4px;
+  padding: 28px;
+  box-shadow: var(--shadow-luxury);
+}
+
+.lux-salon-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.lux-salon-city {
+  font-family: var(--font-serif-royal);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.lux-salon-country {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+}
+
+.lux-salon-address {
+  font-size: 12px;
+  color: var(--silver-muted);
+  margin-bottom: 20px;
+}
+
+.lux-salon-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--silver-hairline);
+  padding-top: 16px;
+}
+
+.lux-salon-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.lux-stat-lbl {
+  color: var(--silver-muted);
+}
+
+/* Admin Dossier Modal */
+.lux-admin-modal {
+  max-width: 720px;
+}
+
+.lux-dossier-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lux-dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  background: rgba(20, 20, 26, 0.6);
+  padding: 18px;
+  border: 1px solid var(--silver-hairline);
+  border-radius: 4px;
+}
+
+.lux-dossier-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lux-dossier-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--silver-muted);
+  text-transform: uppercase;
+}
+
+.lux-dossier-val {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lux-dossier-notes-box {
+  background: rgba(20, 20, 26, 0.6);
+  padding: 16px;
+  border-left: 2px solid var(--gold-primary);
+  border-radius: 2px;
+}
+
+.lux-dossier-notes-text {
+  font-family: var(--font-serif-elegant);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.lux-status-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.lux-status-btn {
+  background: rgba(20, 20, 24, 0.8);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-primary);
+  padding: 8px 14px;
+  border-radius: 2px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.lux-status-btn:hover {
+  border-color: var(--gold-light);
+  color: var(--silver-bright);
+}
+
+.lux-status-btn.active {
+  background: var(--gold-gradient);
+  color: #050505;
+  border-color: #ffd766;
+  font-weight: 700;
+}
+
+.lux-tag-gold {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--gold-hairline);
+  color: var(--gold-light);
+  border-radius: 2px;
+}
+
+.lux-tag-silver {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--silver-hairline);
+  color: var(--silver-bright);
+  border-radius: 2px;
+}
+
+.lux-inquiry-stat-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.lux-allocation-summary-bar {
+  display: flex;
+  gap: 12px;
+}
+
+/* Responsive Admin */
+@media (max-width: 1200px) {
+  .lux-admin-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+  .lux-admin-dashboard-split {
+    grid-template-columns: 1fr;
+  }
+  .lux-allocations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lux-salons-grid {
+    grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 900px) {
+  .lux-admin-portal {
+    flex-direction: column;
+  }
+  .lux-admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .lux-admin-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .lux-admin-topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .lux-admin-metrics-row {
+    grid-template-columns: 1fr;
+  }
+  .lux-allocations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Admin Switchers (Navbar, Footer, Floating Shortcut) */
+.lux-nav-admin-link {
+  background: rgba(14, 14, 18, 0.6);
+  border: 1px solid var(--gold-hairline);
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.lux-nav-admin-link:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--gold-primary);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.lux-admin-link-diamond {
+  color: var(--gold-primary);
+  font-size: 11px;
+}
+
+.lux-footer-admin-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.lux-footer-admin-btn:hover {
+  opacity: 0.8;
+}
+
+/* Floating Maison Admin Switcher */
+.lux-floating-admin-toggle {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 999;
+}
+
+.lux-admin-shortcut-btn {
+  background: rgba(8, 8, 10, 0.92);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-family: var(--font-sans-luxury);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lux-admin-shortcut-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: var(--gold-gradient);
+  color: #050505;
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+}
+
+.lux-shortcut-icon {
+  font-size: 12px;
+}
+
+

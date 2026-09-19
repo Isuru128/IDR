@@ -1,111 +1,114 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Luxury Dark Palette */
+  --bg-abyss: #030303;
+  --bg-primary: #070708;
+  --bg-card: rgba(14, 14, 16, 0.85);
+  --bg-card-hover: rgba(22, 22, 26, 0.95);
+  --bg-glass: rgba(8, 8, 10, 0.7);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Gold System */
+  --gold-light: #FFF0A8;
+  --gold-primary: #D4AF37;
+  --gold-dark: #A37E2C;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --gold-hairline: rgba(212, 175, 55, 0.28);
+  --gold-subtle: rgba(212, 175, 55, 0.08);
+  --gold-gradient: linear-gradient(135deg, #FFF2B2 0%, #D4AF37 50%, #947118 100%);
+  --gold-gradient-text: linear-gradient(135deg, #FFF7D1 0%, #E5C158 40%, #B88928 85%, #FFDF73 100%);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Silver & Platinum System */
+  --silver-white: #FFFFFF;
+  --silver-bright: #F3F4F6;
+  --silver-primary: #C5CAD3;
+  --silver-muted: #848A96;
+  --silver-dark: #4B515D;
+  --silver-hairline: rgba(197, 202, 211, 0.2);
+  --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #C5CAD3 50%, #6E7582 100%);
+  --silver-gradient-text: linear-gradient(135deg, #FFFFFF 0%, #DDE1E7 40%, #A5ABB5 85%, #F0F2F5 100%);
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Typography */
+  --font-serif-royal: 'Cinzel', serif;
+  --font-serif-elegant: 'Cormorant Garamond', Georgia, serif;
+  --font-sans-luxury: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Shadows & Elevations */
+  --shadow-luxury: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.08);
+  --shadow-gold-hover: 0 15px 35px -10px rgba(212, 175, 55, 0.22);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-abyss);
+  color: var(--silver-bright);
+  font-family: var(--font-sans-luxury);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  background-color: var(--bg-abyss);
+  color: var(--silver-bright);
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+::-webkit-scrollbar-track {
+  background: var(--bg-abyss);
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+::-webkit-scrollbar-thumb {
+  background: #252422;
+  border: 1px solid var(--gold-hairline);
   border-radius: 4px;
-  color: var(--text-h);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+/* Selection */
+::selection {
+  background: var(--gold-primary);
+  color: var(--bg-abyss);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif-royal);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
